@@ -5,10 +5,15 @@ import android.view.View;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class LetterViewModel extends ViewModel {
     private MutableLiveData<Character> letter;
+
+    ArrayList<Character> letterArray = new ArrayList<Character>(6);
+    ArrayList<Integer> numberArray = new ArrayList<Integer>(6);
 
     public MutableLiveData <Character> getLetter(){
         if (letter == null){
@@ -16,6 +21,17 @@ public class LetterViewModel extends ViewModel {
         }
         return letter;
     }
+
+    /*public void setArray(char input, int num){
+        switch (num){
+            case 0:
+                letterArray.add(input);
+                break;
+
+            //case 1:
+                //numberArray.add()
+        }
+    }*/
 
     public void setLetter(char c){
         letter.setValue(c);
@@ -54,5 +70,10 @@ public class LetterViewModel extends ViewModel {
             c = pickALetter();
         } while (!isConsonant(c));
         setLetter(c);
+    }
+
+    public void pickNumber() {
+        int a = 53;
+        setLetter((char) a);
     }
 }

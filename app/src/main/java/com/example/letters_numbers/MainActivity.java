@@ -41,6 +41,10 @@ public class MainActivity extends AppCompatActivity {
         viewModel.pickConsonant();
     }
 
+    public void pickNumber(View v){
+        viewModel.pickNumber();
+    }
+
 
 
 }
