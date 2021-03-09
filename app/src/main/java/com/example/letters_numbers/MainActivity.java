@@ -24,11 +24,10 @@ public class MainActivity extends AppCompatActivity {
 
         tvLetter = findViewById(R.id.tv_letter);
 
-        viewModel.getLetter().observe(this, new Observer<Character>() {
+        viewModel.getLetter().observe(this, new Observer<String>() {
             @Override
-            public void onChanged(Character character) {
-                tvLetter.setText(character.toString());
-
+            public void onChanged(String s) {
+                tvLetter.setText(s);
             }
         });
     }
@@ -43,6 +42,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void pickNumber(View v){
         viewModel.pickNumber();
+    }
+
+    public void clearLetter(View v){
+        viewModel.clearLetter();
+    }
+
+    public void clearNumber(View v){
+        viewModel.clearNumber();
     }
 
 

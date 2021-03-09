@@ -1,39 +1,34 @@
 package com.example.letters_numbers;
 
+import android.app.AlertDialog;
+import android.util.Log;
 import android.view.View;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Random;
 
+import static android.content.ContentValues.TAG;
+
 public class LetterViewModel extends ViewModel {
-    private MutableLiveData<Character> letter;
+    private MutableLiveData<String> letter;
+    private MutableLiveData<Character> number;
+
+    public String listString = "";
 
     ArrayList<Character> letterArray = new ArrayList<Character>(6);
     ArrayList<Integer> numberArray = new ArrayList<Integer>(6);
 
-    public MutableLiveData <Character> getLetter(){
+    public MutableLiveData<String> getLetter(){
         if (letter == null){
-            letter= new MutableLiveData <Character>();
+            letter= new MutableLiveData<String>();
         }
         return letter;
     }
 
-    /*public void setArray(char input, int num){
-        switch (num){
-            case 0:
-                letterArray.add(input);
-                break;
-
-            //case 1:
-                //numberArray.add()
-        }
-    }*/
-
-    public void setLetter(char c){
+    public void setLetter(String c){
         letter.setValue(c);
     }
 
@@ -57,23 +52,75 @@ public class LetterViewModel extends ViewModel {
     }
 
     public void pickVowel() {
-        char c;
-        do {
-            c = pickALetter();
-        } while (!isVowel(c));
-        setLetter(c);
+        if (letterArray.size() == 0){
+            char c;
+            do {
+                c = pickALetter();
+            } while (!isVowel(c));
+
+            addToArray(c, 0);
+            listString +=  String.valueOf(c);
+            setLetter(listString);
+        }
+
+        else if (letterArray.size() < 6){
+            char c;
+            do {
+                c = pickALetter();
+            } while (!isVowel(c));
+
+            addToArray(c, 0);
+            listString +=  ", " + String.valueOf(c);
+            setLetter(listString);
+        }
+
     }
 
     public void pickConsonant() {
-        char c;
-        do {
-            c = pickALetter();
-        } while (!isConsonant(c));
-        setLetter(c);
+        if (letterArray.size() == 0){
+            char c;
+            do {
+                c = pickALetter();
+            } while (!isConsonant(c));
+
+            addToArray(c, 0);
+            listString +=  String.valueOf(c);
+            setLetter(listString);
+        }
+
+        else if (letterArray.size() < 6){
+            char c;
+            do {
+                c = pickALetter();
+            } while (!isConsonant(c));
+
+            addToArray(c, 0);
+            listString +=  ", " + String.valueOf(c);
+            setLetter(listString);
+        }
     }
 
     public void pickNumber() {
         int a = 53;
-        setLetter((char) a);
+        setLetter(String.valueOf(a));
     }
+
+    public void addToArray(char input, int num){
+        if (num == 0){
+            letterArray.add(input);
+        }
+    }
+
+    public void clearLetter(){
+        letterArray.clear();
+        listString = "";
+        setLetter(listString);
+    }
+
+    public void clearNumber(){
+        numberArray.clear();
+        listString = "";
+        setLetter(listString);
+    }
+
 }

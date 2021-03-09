@@ -53,4 +53,28 @@
         app:layout_constraintStart_toEndOf="@+id/btn_vowel"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/btn_letter_reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="clearLetter"
+        android:text="Clear letters"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_number_reset"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_letter" />
+
+    <Button
+        android:id="@+id/btn_number_reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="clearNumber"
+        android:text="Clear numbers"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btn_letter_reset"
+        app:layout_constraintTop_toBottomOf="@+id/tv_letter" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
