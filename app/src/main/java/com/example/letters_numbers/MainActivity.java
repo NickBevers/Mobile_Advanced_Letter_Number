@@ -31,43 +31,16 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-
-
-    }
-    public char pickALetter() {
-        Random random = new Random();
-        int ascii = random.nextInt(26) + 97;; // lowercase 'a'
-        return (char)ascii;
-    }
-
-    public boolean isVowel (char c) {
-        char[] vowels = {'a', 'e', 'i', 'o', 'u'};
-
-        for (char v: vowels) {
-            if (v == c) return true;
-        }
-        return false;
-    }
-
-    public boolean isConsonant (char c) {
-        return !isVowel(c);
     }
 
     public void pickVowel(View v) {
-        char c;
-        do {
-            c = pickALetter();
-        } while (!isVowel(c));
-        viewModel.setLetter(c);
+        viewModel.pickVowel();
     }
 
     public void pickConsonant(View v) {
-        char c;
-        do {
-            c = pickALetter();
-        } while (!isConsonant(c));
-        viewModel.setLetter(c);
+        viewModel.pickConsonant();
     }
+
+
 
 }
