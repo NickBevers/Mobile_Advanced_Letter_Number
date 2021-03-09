@@ -18,15 +18,27 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btn_number"
+        android:id="@+id/btn_low_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="pickNumber"
-        android:text="Number"
+        android:onClick="pickLowNumber"
+        android:text="Low"
+        app:layout_constraintBottom_toTopOf="@+id/tv_letter"
+        app:layout_constraintEnd_toStartOf="@+id/btn_high_number"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_high_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="pickHighNumber"
+        android:text="High"
         app:layout_constraintBottom_toTopOf="@+id/tv_letter"
         app:layout_constraintEnd_toStartOf="@+id/btn_vowel"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_low_number"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
@@ -38,7 +50,7 @@
         app:layout_constraintBottom_toTopOf="@+id/tv_letter"
         app:layout_constraintEnd_toStartOf="@+id/btn_consonant"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btn_number"
+        app:layout_constraintStart_toEndOf="@+id/btn_high_number"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button

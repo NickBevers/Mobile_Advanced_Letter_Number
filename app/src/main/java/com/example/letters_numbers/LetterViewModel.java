@@ -1,22 +1,17 @@
 package com.example.letters_numbers;
 
-import android.app.AlertDialog;
-import android.util.Log;
-import android.view.View;
-
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-import static android.content.ContentValues.TAG;
-
 public class LetterViewModel extends ViewModel {
     private MutableLiveData<String> letter;
-    private MutableLiveData<Character> number;
+    private MutableLiveData<Integer> number;
 
     public String listString = "";
+    public String numberString = "";
 
     ArrayList<Character> letterArray = new ArrayList<Character>(6);
     ArrayList<Integer> numberArray = new ArrayList<Integer>(6);
@@ -58,7 +53,7 @@ public class LetterViewModel extends ViewModel {
                 c = pickALetter();
             } while (!isVowel(c));
 
-            addToArray(c, 0);
+            letterArray.add(c);
             listString +=  String.valueOf(c);
             setLetter(listString);
         }
@@ -69,8 +64,8 @@ public class LetterViewModel extends ViewModel {
                 c = pickALetter();
             } while (!isVowel(c));
 
-            addToArray(c, 0);
-            listString +=  ", " + String.valueOf(c);
+            letterArray.add(c);
+            listString +=  " " + c;
             setLetter(listString);
         }
 
@@ -83,7 +78,7 @@ public class LetterViewModel extends ViewModel {
                 c = pickALetter();
             } while (!isConsonant(c));
 
-            addToArray(c, 0);
+            letterArray.add(c);;
             listString +=  String.valueOf(c);
             setLetter(listString);
         }
@@ -94,22 +89,53 @@ public class LetterViewModel extends ViewModel {
                 c = pickALetter();
             } while (!isConsonant(c));
 
-            addToArray(c, 0);
-            listString +=  ", " + String.valueOf(c);
+            letterArray.add(c);
+            listString +=  " " + c;
             setLetter(listString);
         }
     }
 
-    public void pickNumber() {
-        int a = 53;
-        setLetter(String.valueOf(a));
-    }
-
-    public void addToArray(char input, int num){
-        if (num == 0){
-            letterArray.add(input);
+    public void pickLowNumber() {
+        if (numberArray.size() < 6) {
+            Random lowr = new Random();
+            int low = lowr.nextInt(9) + 1;
+            numberArray.add(low);
+            numberString += " " + low;
+            setLetter(numberString);
         }
     }
+
+    public void pickHighNumber() {
+        if (numberArray.size() < 6){
+            Random highr = new Random();
+            int high = highr.nextInt(5);
+            switch (high){
+                case 0:
+                    high = 10;
+                    break;
+
+                case 1:
+                    high = 25;
+                    break;
+
+                case 2:
+                    high = 50;
+                    break;
+
+                case 3:
+                    high = 75;
+                    break;
+
+                case 4:
+                    high = 100;
+                    break;
+            }
+            numberArray.add(high);
+            numberString += " " + high;
+            setLetter(numberString);
+        }
+    }
+
 
     public void clearLetter(){
         letterArray.clear();
@@ -119,7 +145,7 @@ public class LetterViewModel extends ViewModel {
 
     public void clearNumber(){
         numberArray.clear();
-        listString = "";
+        numberString = "";
         setLetter(listString);
     }
 

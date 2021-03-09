@@ -40,8 +40,12 @@ public class MainActivity extends AppCompatActivity {
         viewModel.pickConsonant();
     }
 
-    public void pickNumber(View v){
-        viewModel.pickNumber();
+    public void pickLowNumber(View v){
+        viewModel.pickLowNumber();
+    }
+
+    public void pickHighNumber(View v){
+        viewModel.pickHighNumber();
     }
 
     public void clearLetter(View v){
