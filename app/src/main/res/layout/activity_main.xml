@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,96 +8,24 @@
     android:orientation="vertical">
 
     <FrameLayout
-        android:id="@+id/layoutA"
+        android:id="@+id/fragLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <FrameLayout
-        android:id="@+id/layoutB"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        android:id="@+id/tv_letter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btn_low_number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="pickLowNumber"
-        android:text="Low"
-        app:layout_constraintBottom_toTopOf="@+id/tv_letter"
-        app:layout_constraintEnd_toStartOf="@+id/btn_high_number"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btn_high_number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="pickHighNumber"
-        android:text="High"
-        app:layout_constraintBottom_toTopOf="@+id/tv_letter"
-        app:layout_constraintEnd_toStartOf="@+id/btn_vowel"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btn_low_number"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btn_vowel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="pickVowel"
-        android:text="vowel"
-        app:layout_constraintBottom_toTopOf="@+id/tv_letter"
-        app:layout_constraintEnd_toStartOf="@+id/btn_consonant"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btn_high_number"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btn_consonant"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="pickConsonant"
-        android:text="consonant"
-        app:layout_constraintBottom_toTopOf="@+id/tv_letter"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/switchBtn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btn_vowel"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btn_letter_reset"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="clearLetter"
-        android:text="Clear letters"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btn_number_reset"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_letter" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/btn_number_reset"
+        android:id="@+id/switchBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="clearNumber"
-        android:text="Clear numbers"
+        android:text="Switch"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btn_letter_reset"
-        app:layout_constraintTop_toBottomOf="@+id/tv_letter" />
+        app:layout_constraintStart_toStartOf="parent" />
 
-</LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

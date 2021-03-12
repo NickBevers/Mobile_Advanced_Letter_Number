@@ -1,61 +1,56 @@
 package com.example.letters_numbers;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
+    private Fragment visibleLayout;
+
     TextView tvLetter;
     LetterViewModel viewModel;
+    private Frag_Letter letterFrag = new Frag_Letter();
+    private Frag_Number numberFrag = new Frag_Number();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        viewModel = new ViewModelProvider(this).get(LetterViewModel.class);
+        visibleLayout = letterFrag;
+        Button switchBtn = findViewById(R.id.switchBtn);
 
-        tvLetter = findViewById(R.id.tv_letter);
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragLayout, visibleLayout)
+                .commit();
 
-        viewModel.getLetter().observe(this, new Observer<String>() {
+        switchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onChanged(String s) {
-                tvLetter.setText(s);
+            public void onClick(View v) {
+                if(visibleLayout == letterFrag){
+                    visibleLayout = numberFrag;
+
+                }
+                else{
+                    visibleLayout = letterFrag;
+                }
+
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragLayout, visibleLayout)
+                        .commit();
+
             }
         });
     }
-
-    public void pickVowel(View v) {
-        viewModel.pickVowel();
-    }
-
-    public void pickConsonant(View v) {
-        viewModel.pickConsonant();
-    }
-
-    public void pickLowNumber(View v){
-        viewModel.pickLowNumber();
-    }
-
-    public void pickHighNumber(View v){
-        viewModel.pickHighNumber();
-    }
-
-    public void clearLetter(View v){
-        viewModel.clearLetter();
-    }
-
-    public void clearNumber(View v){
-        viewModel.clearNumber();
-    }
-
-
-
 }

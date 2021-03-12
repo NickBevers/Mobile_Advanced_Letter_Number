@@ -7,23 +7,23 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class LetterViewModel extends ViewModel {
-    private MutableLiveData<String> letter;
-    private MutableLiveData<Integer> number;
-
     public String listString = "";
     public String numberString = "";
 
     ArrayList<Character> letterArray = new ArrayList<Character>(6);
     ArrayList<Integer> numberArray = new ArrayList<Integer>(6);
 
-    public MutableLiveData<String> getLetter(){
+    private MutableLiveData<CharSequence> letter;
+    private MutableLiveData<Integer> number;
+
+    public MutableLiveData<CharSequence> getLetter(){
         if (letter == null){
-            letter= new MutableLiveData<String>();
+            letter= new MutableLiveData<CharSequence>();
         }
         return letter;
     }
 
-    public void setLetter(String c){
+    public void setLetter(CharSequence c){
         letter.setValue(c);
     }
 
